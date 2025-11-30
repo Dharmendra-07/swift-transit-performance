@@ -1,44 +1,30 @@
-Here is the clean, polished, ready-to-copy README.md — no extra comments, no emojis unless useful, fully formatted, professional.
+# 🚀 SWIFT Transit Performance Analyzer
 
-You can copy–paste directly into your README.md file.
+A complete end-to-end Python project for analyzing shipment performance, delivery delays, and transit efficiency.
 
-⸻
+---
 
-SWIFT Transit Performance Analysis
+## 📌 Overview
 
-A complete Python-based analytics system for processing FedEx tracking data, computing transit performance metrics, and generating detailed shipment-level and network-level reports.
+**SWIFT Transit Performance Analyzer** processes shipment events and automatically generates:
 
-This project is designed to handle real-world FedEx API JSON responses, including nested structures, event logs, facility transitions, timestamp variations, and missing fields.
+- Cleaned & validated shipment data  
+- Per-shipment performance metrics  
+- Summary KPIs (avg delivery time, delays, on-time %)  
+- CSV exports for dashboards or analysis  
 
-⸻
+Run a single command:
 
-Project Overview
+```bash
+python3 main.py
+```
 
-The system reads and validates tracking data, flattens shipment and event-level information, calculates time-based and facility-based KPIs, and exports analytics reports in CSV format.
+---
 
-It includes:
-	•	Accurate transit time calculations
-	•	Facility touchpoint analysis
-	•	Delivery performance metrics
-	•	Service type comparisons
-	•	Comprehensive CSV exports
+## 📂 Project Structure
 
-⸻
-
-Project Structure
-
-swift-transit-analysis/
-│
-├── src/
-│   ├── __init__.py
-│   ├── data_loader.py
-│   ├── data_processor.py
-│   ├── metrics_calculator.py
-│   └── output_generator.py
-│
-├── config/
-│   ├── __init__.py
-│   └── constants.py
+```
+swift-transit-performance/
 │
 ├── data/
 │   └── shipment_data.json
@@ -47,155 +33,162 @@ swift-transit-analysis/
 │   ├── transit_performance_detailed.csv
 │   └── transit_performance_summary.csv
 │
+├── services/
+│   ├── data_loader.py
+│   ├── event_processing.py
+│   ├── performance_calculator.py
+│   └── utils.py
+│
 ├── main.py
 ├── requirements.txt
 └── README.md
+```
 
+---
 
-⸻
+## ⚙️ Installation
 
-Installation
+### 1️⃣ Create & Activate Virtual Environment
 
-1. Clone or download the project
+```bash
+python3 -m venv venv
+source venv/bin/activate       # Mac/Linux
+venv\Scripts\activate          # Windows
+```
 
-Using git:
+### 2️⃣ Install Dependencies
 
-git clone https://github.com/your-repo/swift-transit-analysis
-cd swift-transit-analysis
-
-Or create manually:
-
-mkdir swift-transit-analysis
-cd swift-transit-analysis
-
-
-⸻
-
-Dependencies
-
-Install required libraries:
-
+```bash
 pip install -r requirements.txt
+```
 
-requirements.txt contains:
+---
 
-pandas>=1.5.0
-numpy>=1.21.0
-python-dateutil>=2.8.0
+## ▶️ Run the Project
 
+Place your file:
 
-⸻
-
-Input Data
-
-Place your FedEx API tracking data here:
-
+```
 data/shipment_data.json
+```
 
-The file should contain FedEx tracking API responses with fields such as:
-	•	trackDetails
-	•	events
-	•	service
-	•	packageWeight
-	•	statusDetail
-	•	carrierCode
+Then run:
 
-⸻
+```bash
+python3 main.py
+```
 
-Running the Analysis
+Example output:
 
-Run the complete analytics pipeline:
+```
+🚀 SWIFT Transit Performance Analysis
+📥 Loading data from: data/shipment_data.json  
+📊 Validation Report:
+   • Total shipments: 95
+   • Valid shipments: 95
+   • Total events: 1,243
+```
 
-python main.py
+---
 
-If successful, output will appear under the output/ directory.
+## 📤 Output Files
 
-⸻
+### 1️⃣ Detailed Performance  
+`output/transit_performance_detailed.csv`
 
-Output Files
+Columns include:
 
-1. Shipment-Level Detailed Report
+| shipment_id | first_scan | delivered_at | total_hours | status | delayed_by_hrs |
+|-------------|------------|---------------|-------------|--------|----------------|
 
-File:
+---
 
-output/transit_performance_detailed.csv
+### 2️⃣ Summary  
+`output/transit_performance_summary.csv`
 
-Includes:
-	•	Tracking number
-	•	Origin/destination info
-	•	Pickup & delivery timestamps
-	•	Total transit hours
-	•	Number of facilities visited
-	•	Number of in-transit events
-	•	Time between facilities
-	•	Average hours per facility
-	•	Service type classification
-	•	Out-for-delivery attempts
-	•	Delivery success flags
-	•	Total event count
+| total_shipments | delivered | avg_delivery_hours | on_time_percent |
+|----------------|-----------|---------------------|------------------|
 
-⸻
+---
 
-2. Network-Level Summary Report
+## 🧪 Example Command Result
 
-File:
+```
+🚀 SWIFT Transit Performance Analysis
+============================================================
 
-output/transit_performance_summary.csv
+1. 📥 LOADING DATA  
+----------------------------------------
+📥 Loading data from: data/shipment_data.json  
+📊 Validation Report:
+   • Total shipments: 95
+   • Valid shipments: 95
+   • Total events: 1,243
+   • Event types: ['ARRIVED', 'DISPATCHED', 'OFD', 'DELIVERED']
 
-Includes:
-	•	Total shipments analyzed
-	•	Average, median, min, max transit hours
-	•	Standard deviation of transit times
-	•	Facility statistics
-	•	Service-type comparisons
-	•	First-attempt delivery percentage
-	•	Average delivery attempts
+2. ⚙️ PROCESSING SHIPMENT EVENTS  
+----------------------------------------
 
-⸻
+3. 📈 CALCULATING SUMMARY KPIs  
+----------------------------------------
 
-Example Metrics
+4. 💾 EXPORT  
+----------------------------------------
+📄 Detailed -> output/transit_performance_detailed.csv  
+📄 Summary  -> output/transit_performance_summary.csv  
 
-Metric	Description
-total_transit_hours	Time from pickup event to delivery event
-num_facilities_visited	Count of unique facilities scanned
-num_in_transit_events	Scans like IT, AR, DP
-avg_hours_per_facility	Transit time divided by facility count
-is_express_service	Classification based on service type
-first_attempt_delivery	Whether delivery succeeded on first attempt
+🎉 DONE!
+```
 
+---
 
-⸻
+## 🧹 Fix for "Valid shipments: 0" Issue
 
-Notes
+If you see:
 
-This project is designed to handle:
-	•	Missing fields
-	•	Null timestamps
-	•	MongoDB $numberLong timestamps
-	•	ISO time formats
-	•	Duplicate events
-	•	Shipments with incomplete sequences
-	•	Empty event arrays
+```
+Valid shipments: 0
+Cannot proceed without data
+```
 
-⸻
+Your JSON format is wrong.
 
-Contributing
+Use this format:
 
-Contributions, improvements, and feature requests are welcome.
-Submit a pull request or open an issue.
+```json
+[
+  {
+    "shipment_id": "SWF123",
+    "events": [
+      { "event_type": "ARRIVED", "timestamp": "2025-01-21T10:00:00" },
+      { "event_type": "DEPARTED", "timestamp": "2025-01-21T14:30:00" },
+      { "event_type": "DELIVERED", "timestamp": "2025-01-22T09:50:00" }
+    ]
+  }
+]
+```
 
-⸻
+---
 
-License
+## 🛠 Technologies Used
 
-MIT License. Free for personal and commercial use.
+- Python 3.10+
+- Pandas  
+- Datetime  
+- Structured logging  
 
-⸻
+---
 
-If you want, I can also generate:
-	•	A diagram architecture
-	•	A Jupyter Notebook version
-	•	A visual dashboard (Streamlit)
-	•	A sample dataset for testing
+## 💬 Need More Features?
 
-Just tell me anytime!
+If you want:
+
+- JSON generator  
+- Fake data creator  
+- API ingestion  
+- Database integration  
+- Visualization dashboards  
+
+Tell me — I’ll build the next module.
+
+---
