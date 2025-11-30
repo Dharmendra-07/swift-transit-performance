@@ -118,8 +118,6 @@ Columns include:
 🎉 DONE!
 ```
 
----
-
 ## 🛠 Technologies Used
 
 - Python 3.10+
