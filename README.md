@@ -110,62 +110,12 @@ Columns include:
 |----------------|-----------|---------------------|------------------|
 
 ---
-
-## 🧪 Example Command Result
-
-```
-🚀 SWIFT Transit Performance Analysis
-============================================================
-
-1. 📥 LOADING DATA  
-----------------------------------------
-📥 Loading data from: data/shipment_data.json  
-📊 Validation Report:
-   • Total shipments: 95
-   • Valid shipments: 95
-   • Total events: 1,243
-   • Event types: ['ARRIVED', 'DISPATCHED', 'OFD', 'DELIVERED']
-
-2. ⚙️ PROCESSING SHIPMENT EVENTS  
-----------------------------------------
-
-3. 📈 CALCULATING SUMMARY KPIs  
-----------------------------------------
-
-4. 💾 EXPORT  
+ 💾 EXPORT  
 ----------------------------------------
 📄 Detailed -> output/transit_performance_detailed.csv  
 📄 Summary  -> output/transit_performance_summary.csv  
 
 🎉 DONE!
-```
-
----
-
-## 🧹 Fix for "Valid shipments: 0" Issue
-
-If you see:
-
-```
-Valid shipments: 0
-Cannot proceed without data
-```
-
-Your JSON format is wrong.
-
-Use this format:
-
-```json
-[
-  {
-    "shipment_id": "SWF123",
-    "events": [
-      { "event_type": "ARRIVED", "timestamp": "2025-01-21T10:00:00" },
-      { "event_type": "DEPARTED", "timestamp": "2025-01-21T14:30:00" },
-      { "event_type": "DELIVERED", "timestamp": "2025-01-22T09:50:00" }
-    ]
-  }
-]
 ```
 
 ---
