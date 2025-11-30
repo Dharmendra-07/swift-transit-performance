@@ -96,17 +96,39 @@ Example output:
 ### 1️⃣ Detailed Performance  
 `output/transit_performance_detailed.csv`
 
-Columns include:
+This file contains one row per shipment with complete transit analytics.
 
-| tracking_number | service_type | carrier_code | package_weight_kg | packaging_type |
-|----------------|--------------|--------------|--------------------|----------------|
-| origin_city | origin_state | origin_pincode | destination_city | destination_state |
-| origin_pincode | pickup_datetime_ist | delivery_datetime_ist | total_transit_hours | num_facilities_visited |
-| num_in_transit_events | time_in_inter_facility_transit_hours | avg_hours_per_facility | is_express_service | delivery_location_type |
-| num_out_for_delivery_attempts | first_attempt_delivery | total_events_count |
+#### 📌 Columns Included
 
-### 2️⃣ Summary  
-`output/transit_performance_summary.csv`
+| Column Name | Description |
+|------------|-------------|
+| **tracking_number** | Unique FedEx tracking number |
+| **service_type** | Shipping service (e.g., Express, Economy) |
+| **carrier_code** | FedEx carrier code (FDXE, FDXG, etc.) |
+| **package_weight_kg** | Weight of the package in kilograms |
+| **packaging_type** | Type of packaging used |
+| **origin_city** | Origin city name |
+| **origin_state** | Origin state/province |
+| **origin_pincode** | Origin postal code |
+| **destination_city** | Destination city name |
+| **destination_state** | Destination state/province |
+| **destination_pincode** | Destination postal code |
+| **pickup_datetime_ist** | Pickup timestamp (converted to IST) |
+| **delivery_datetime_ist** | Delivery timestamp (converted to IST) |
+| **total_transit_hours** | Total delivery time in hours |
+| **num_facilities_visited** | Number of FedEx facilities scanned through |
+| **num_in_transit_events** | Count of "In Transit" events |
+| **time_in_inter_facility_transit_hours** | Hours spent between facilities |
+| **avg_hours_per_facility** | Avg processing time per facility |
+| **is_express_service** | Whether shipment used an express service (Yes/No) |
+| **delivery_location_type** | Residential/Commercial classification |
+| **num_out_for_delivery_attempts** | Number of OFD events |
+| **first_attempt_delivery** | Delivered on first attempt? (True/False) |
+| **total_events_count** | Total number of tracking events |
+
+---
+
+If you want, I can format the **Summary CSV section** in the same beautiful style.
 
 | total_shipments | delivered | avg_delivery_hours | on_time_percent |
 |----------------|-----------|---------------------|------------------|
