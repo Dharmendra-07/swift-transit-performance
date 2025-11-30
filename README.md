@@ -127,11 +127,52 @@ This file contains one row per shipment with complete transit analytics.
 | **total_events_count** | Total number of tracking events |
 
 ---
+### 2️⃣ Summary Performance  
+`output/transit_performance_summary.csv`
 
-If you want, I can format the **Summary CSV section** in the same beautiful style.
+This file provides **aggregated network-level performance metrics** across all shipments.
 
-| total_shipments | delivered | avg_delivery_hours | on_time_percent |
-|----------------|-----------|---------------------|------------------|
+#### 📊 Columns Included
+
+**Overall Metrics**
+
+| Column Name | Description |
+|------------|-------------|
+| **total_shipments_analyzed** | Total number of shipments processed |
+| **avg_transit_hours** | Average total transit time (in hours) |
+| **median_transit_hours** | Median total transit time (in hours) |
+| **std_dev_transit_hours** | Standard deviation of transit times |
+| **min_transit_hours** | Shortest transit time recorded |
+| **max_transit_hours** | Longest transit time recorded |
+
+**Facility Metrics**
+
+| Column Name | Description |
+|------------|-------------|
+| **avg_facilities_per_shipment** | Average number of facilities visited per shipment |
+| **median_facilities_per_shipment** | Median number of facilities visited |
+| **mode_facilities_per_shipment** | Most common number of facilities visited |
+| **avg_hours_per_facility** | Average hours spent at each facility |
+| **median_hours_per_facility** | Median hours spent per facility |
+
+**Service Type Comparison** *(Grouped by `service.type`)*
+
+| Column Name | Description |
+|------------|-------------|
+| **avg_transit_hours_by_service_type** | Average transit hours for each service type |
+| **avg_facilities_by_service_type** | Average facilities visited for each service type |
+| **count_shipments_by_service_type** | Number of shipments for each service type |
+
+**Delivery Performance**
+
+| Column Name | Description |
+|------------|-------------|
+| **pct_first_attempt_delivery** | Percentage of shipments delivered on the first attempt |
+| **avg_out_for_delivery_attempts** | Average number of “out for delivery” attempts per shipment |
+
+---
+
+This summary CSV complements the **detailed shipment-level CSV** to provide both **per-shipment insights** and **network-wide KPIs**, making it ideal for dashboards, reports, or analytics.
 
 ---
  💾 EXPORT  
