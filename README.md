@@ -98,10 +98,12 @@ Example output:
 
 Columns include:
 
-| shipment_id | first_scan | delivered_at | total_hours | status | delayed_by_hrs |
-|-------------|------------|---------------|-------------|--------|----------------|
-
----
+| tracking_number | service_type | carrier_code | package_weight_kg | packaging_type |
+|----------------|--------------|--------------|--------------------|----------------|
+| origin_city | origin_state | origin_pincode | destination_city | destination_state |
+| origin_pincode | pickup_datetime_ist | delivery_datetime_ist | total_transit_hours | num_facilities_visited |
+| num_in_transit_events | time_in_inter_facility_transit_hours | avg_hours_per_facility | is_express_service | delivery_location_type |
+| num_out_for_delivery_attempts | first_attempt_delivery | total_events_count |
 
 ### 2️⃣ Summary  
 `output/transit_performance_summary.csv`
@@ -118,7 +120,7 @@ Columns include:
 🎉 DONE!
 ```
 
-## 🛠 Technologies Used
+**🛠 Technologies Used**
 
 - Python 3.10+
 - Pandas  
