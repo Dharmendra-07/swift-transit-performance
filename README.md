@@ -143,11 +143,8 @@ If you want, I can format the **Summary CSV section** in the same beautiful styl
 
 
 **🛠 Technologies Used**
-
+```
 - Python 3.10+
 - Pandas  
 - Datetime  
 - Structured logging
-  ``` 
-
-
